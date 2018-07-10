@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" data-ng-app="ShoppingListCheckOff">
+  <head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .emptyMessage,
+      .errorMessage {
+        font-weight: bold;
+        color: red;
+        font-size: 1.2em;
+      }
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+    </style>
+  </head>
+<body>
+  <div class="container">
+  <h1>Shopping List Check Off</h1>
+
+  <div class="row">
+
+    <!-- To Buy List -->
+    <div class="col-md-6" data-ng-controller="ToBuyController as toBuy">
+     <h2>To Buy:</h2>
+     <ul>
+       <li data-ng-repeat="item in toBuy.items track by $index">
+         Buy <span data-ng-bind="item.quantity"></span>
+         &nbsp;
+         <span data-ng-bind="item.name"></span>
+         <button class="btn btn-default" data-ng-click="toBuy.buy($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+       </li>
+     </ul>
+     <div class="emptyMessage" data-ng-if="toBuy.items.length == 0">Everything is bought!</div>
+    </div>
+
+    <!-- Already Bought List -->
+    <div class="col-md-6" data-ng-controller="AlreadyBoughtController as alreadyBought">
+     <h2>Already Bought:</h2>
+     <ul>
+       <li data-ng-repeat="item in alreadyBought.items track by $index">Bought <span data-ng-bind="item.quantity"></span>&nbsp;<span data-ng-bind="item.name"></span></li>
+     </ul>
+     <div class="emptyMessage" data-ng-if="alreadyBought.items.length == 0">Nothing bought yet.</div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-12" data-ng-controller="ToBuyController as toBuy">
+      <h2><i>BONUS!</i> One moment please, I want to buy something else!</h2>
+      Name : <input type="text" placeholder="name" data-ng-model="toBuy.name"/>
+      Quantity: <input type="number" placeholder="quantity" data-ng-model="toBuy.quantity"/>
+      <button class="btn btn-default" data-ng-click="toBuy.addItem();">Add to list</button>
+      <div class="errorMessage" data-ng-if="toBuy.errorMessage" data-ng-bind="toBuy.errorMessage"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
