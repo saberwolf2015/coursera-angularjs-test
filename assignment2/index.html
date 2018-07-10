@@ -15,6 +15,10 @@
         color: red;
         font-size: 1.2em;
       }
+      ul {
+        list-style-type: none;
+        padding-left: 5px;
+      }
       li {
         margin-bottom: 7px;
         font-size: 1.2em;
@@ -25,6 +29,12 @@
       button > span {
         color: green;
       }
+      /* enable overflow */
+      li div {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
     </style>
   </head>
 <body>
@@ -38,10 +48,16 @@
      <h2>To Buy:</h2>
      <ul>
        <li data-ng-repeat="item in toBuy.items track by $index">
-         Buy <span data-ng-bind="item.quantity"></span>
-         &nbsp;
-         <span data-ng-bind="item.name"></span>
-         <button class="btn btn-default" data-ng-click="toBuy.buy($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+         <div class="row">
+         <div class="col-md-4">
+           &#9998;&nbsp;Buy&nbsp;
+           <span data-ng-bind="item.quantity" class="quantity"></span>
+         </div>
+         <div class="col-md-5" data-ng-bind="item.name" class="name"></div>
+         <div class="col-md-3">
+           <button class="btn btn-default" data-ng-click="toBuy.buy($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+         </div>
+        </div>
        </li>
      </ul>
      <div class="emptyMessage" data-ng-if="toBuy.items.length == 0">Everything is bought!</div>
@@ -51,7 +67,9 @@
     <div class="col-md-6" data-ng-controller="AlreadyBoughtController as alreadyBought">
      <h2>Already Bought:</h2>
      <ul>
-       <li data-ng-repeat="item in alreadyBought.items track by $index">Bought <span data-ng-bind="item.quantity"></span>&nbsp;<span data-ng-bind="item.name"></span></li>
+       <li data-ng-repeat="item in alreadyBought.items track by $index">
+         Bought <span data-ng-bind="item.quantity"></span>&nbsp;<span data-ng-bind="item.name"></span>
+       </li>
      </ul>
      <div class="emptyMessage" data-ng-if="alreadyBought.items.length == 0">Nothing bought yet.</div>
     </div>

@@ -60,11 +60,11 @@
     var service = this;
 
     var toBuyList = [
-      { name: "cookies", quantity: 10 },
-      { name: "banana", quantity: 5 },
-      { name: "strawberry", quantity: 50 },
-      { name: "onion", quantity: 15 },
-      { name: "cheese", quantity: 100 },
+      { name: "Deathclaw steak", quantity: 1 },
+      { name: "Iguana-on-a-stick", quantity: 8 },
+      { name: "Mole rat meat", quantity: 15 },
+      { name: "Cram", quantity: 3 },
+      { name: "Nuka-Cola", quantity: 50 },
     ];
 
     var boughtList = [];
@@ -76,16 +76,16 @@
       return boughtList;
     }
     service.buy = function(idx) {
-      console.log('service.buy('+idx+')');
+      //console.log('service.buy('+idx+')');
       var bought = toBuyList.splice(idx,1);
       //boughtList = boughtList.concat(bought);
       for(var i = 0; i < bought.length; i++) {
         boughtList.push(bought[i]);
       }
 
-      console.log('bought ' +JSON.stringify(bought));
-      console.log('toBuyList ' +JSON.stringify(toBuyList));
-      console.log('boughtList ' +JSON.stringify(boughtList));
+      //console.log('bought ' +JSON.stringify(bought));
+      //console.log('toBuyList ' +JSON.stringify(toBuyList));
+      //console.log('boughtList ' +JSON.stringify(boughtList));
     }
     service.addItem = function(name,quantity) {
       var item = { name : name.trim() , quantity : parseFloat(quantity)};
