@@ -105,7 +105,7 @@
   function FoundItems() {
     var ddo = {
       restrict: 'A',
-      templateUrl: '../tpl/itemList.html',
+      templateUrl: './tpl/itemList.html',
       scope: {
         items : '<',
         onRemove : '&'
