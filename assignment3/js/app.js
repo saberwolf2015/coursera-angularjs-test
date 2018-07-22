@@ -31,12 +31,12 @@
     ctrl.load = false; //do we need show a loader
 
     ctrl.remove = function(index) {
-      console.log(ctrl);
+      //console.log(ctrl);
       ctrl.found.splice(index, 1);
     };
     ctrl.find = function() {
       ctrl.error = '';//reset error message
-      console.log('ctrl.find ' + ctrl.searchString.length);
+      ctrl.found = [];//reset array
       if(ctrl.searchString.length == 0) {
         ctrl.error = NOTHING_FOUND;
         return;
@@ -50,12 +50,10 @@
         if(ctrl.found.length == 0) {
           ctrl.error = NOTHING_FOUND;
         }
-        console.log('ctrl.found');
-        console.log(ctrl.found);
+        //console.log(ctrl.found);
       }).catch(function (error) {
         ctrl.load = false;
         ctrl.error = error;
-          console.log("Something went terribly wrong.");
         });
     };
   };
@@ -76,11 +74,12 @@
           //console.log(result);
           // process result and only keep items that match
           var foundItems = [];
-          var regexp = new RegExp(searchTerm, 'gi')
+          var regexp = new RegExp(searchTerm, 'gi');//ignore case and found all
+          var searchRegexp = new RegExp(searchTerm, "i");//ignore case
           for(var i = 0; i < result.data.menu_items.length; i++){
-            if(result.data.menu_items[i].short_name.indexOf(searchTerm) !== -1 ||
-              result.data.menu_items[i].name.indexOf(searchTerm) !== -1 ||
-              result.data.menu_items[i].description.indexOf(searchTerm) !== -1) {
+            if(result.data.menu_items[i].short_name.search(searchRegexp) !== -1 ||
+              result.data.menu_items[i].name.search(searchRegexp) !== -1 ||
+              result.data.menu_items[i].description.search(searchRegexp) !== -1) {
                 console.log("found");
                 console.log(result.data.menu_items[i]);
                 result.data.menu_items[i].name = result.data.menu_items[i].name.replace(regexp, '<span class="found">'+searchTerm+'</span>');
@@ -88,8 +87,6 @@
                 foundItems.push(result.data.menu_items[i]);
             }
           }
-
-          //console.log(foundItems);
           // return processed items
           return foundItems;
       });
