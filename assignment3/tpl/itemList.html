@@ -1,0 +1,16 @@
+<h2 class="" data-ng-if='items.length > 0'>
+  Total: <span data-ng-bind="items.length"></span>
+</h2>
+<div class="row" data-ng-repeat='item in items track by $index'>
+  <div class="col-xs-8">
+    <section>
+      <h3 data-ng-bind-html='item.name'></h3>
+      <div data-ng-bind='item.short_name'></div>
+      <span class='number' data-ng-bind='$index + 1'></span>
+      <p data-ng-bind-html='item.description'></p>
+    </section>
+  </div>
+  <div class="col-xs-2">
+    <button class="btn btn-primary" data-ng-click='onRemove({index : $index});'>Don't want this one!</button>
+  </div>
+</div>
