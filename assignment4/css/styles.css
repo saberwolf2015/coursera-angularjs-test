@@ -33,3 +33,7 @@ ul.breadcrumbs li a:hover {
   font-weight: bold;
   text-decoration: underline;
 }
+
+.active {
+  background-color: lightgreen;
+}
