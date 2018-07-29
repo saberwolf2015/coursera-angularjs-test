@@ -4,4 +4,13 @@
   <li><a ui-sref="categories">Categories</a></li>
   <li><span data-ng-bind='$ctrl.items.category.name'></span></li>
 </ul>
-<items data-items="$ctrl.items"></items>
+<div id="main-content" class="container-fluid">
+  <div class="row">
+    <div class="col-xs-6">
+      <items data-items="$ctrl.items"></items>
+    </div>
+    <div class="col-xs-6">
+      <ui-view></ui-view>
+    </div>
+  </div>
+</div>

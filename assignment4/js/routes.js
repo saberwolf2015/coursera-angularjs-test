@@ -44,7 +44,13 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
         return MenuDataService.getItemsForCategory($stateParams.shortName);
       }]
     }
-  });
+  })
+  //test subview
+  .state('items.itemDetail', {
+  url: '/item-detail/{itemId}',
+  templateUrl: './templates/routes/item-detail.template.html',
+  controller: "ItemDetailController as $ctrl"
+});
 }
 
 })();

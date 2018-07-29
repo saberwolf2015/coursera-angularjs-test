@@ -1,5 +1,11 @@
-<div class="categories" data-ng-repeat="item in $ctrl.items">
-  <a ui-sref="items({shortName : item.short_name})">
-    <span data-ng-bind="item.name"></span>
-  </a>
+<div id="main-content" class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="categories" data-ng-repeat="item in $ctrl.items">
+        <a ui-sref="items({shortName : item.short_name})">
+          <span data-ng-bind="item.name"></span>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>

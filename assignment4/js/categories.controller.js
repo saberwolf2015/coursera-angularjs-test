@@ -4,20 +4,11 @@
 angular.module('data')
 .controller('CategoriesController', CategoriesController);
 
-
-CategoriesController.$inject = ['items'/*,'MenuDataService'*/];
-function CategoriesController(items,/*MenuDataService*/) {
+CategoriesController.$inject = ['items'];
+function CategoriesController(items) {
   console.log('CategoriesController');
   var $ctrl = this;
   $ctrl.items = items;
-  // $ctrl.items = [];
-  // $ctrl.$onInit = function () {
-  //   MenuDataService.getAllCategories()
-  //   .then(function (result) {
-  //       $ctrl.items = result;
-  //   });
-  //}
 }
-
 
 })();

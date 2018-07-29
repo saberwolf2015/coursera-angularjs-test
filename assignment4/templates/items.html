@@ -1,3 +1,6 @@
 <div data-ng-repeat="item in $ctrl.items.menu_items">
-  <span data-ng-bind="item.name"></span>
+  <a ui-sref="items.itemDetail({itemId: $index})">
+    <span data-ng-bind="item.name"></span>
+  </a>
+
 </div>
