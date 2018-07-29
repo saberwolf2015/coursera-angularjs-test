@@ -1,5 +1,5 @@
 <div data-ng-repeat="item in $ctrl.items.menu_items">
-  <a ui-sref="items.itemDetail({itemId: $index})">
+  <a ui-sref="items.itemDetail({itemId: item.id})">
     <span data-ng-bind="item.name"></span>
   </a>
 
