@@ -2,15 +2,20 @@
 <html lang="en" dir="ltr" data-ng-app="MenuApp">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Welcome to our Restaurant</title>
+    <!-- In IE 9 this wont work, it will block all $http requests -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/lib/jquery-1.11.3.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
   </head>
   <body>
+    <div class="warning">
+      &#9888;
+      Angularjs $http requests is not working in the ie9!
+      Some solutions and explanations <a href="https://www.credera.com/blog/credera-site/cors-angular-and-shudder-ie9/">found her</a> and <a href="http://stepansuvorov.com/blog/2014/09/angularjs-ie9-cors/">here</a> (2018.07.29)
+    </div>
     <ui-view></ui-view>
-
     <!-- Libraries -->
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-ui-router.min.js"></script>

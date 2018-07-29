@@ -11,8 +11,6 @@ ul.breadcrumbs li {
 ul.breadcrumbs li+li:before {
     padding: 8px;
     color: black;
-    /*content: "/\00a0";*/
-    /*content: '&#9758;';*/
     content: '\261E';
 }
 ul.breadcrumbs li a {
@@ -31,4 +29,15 @@ ul.breadcrumbs li a:hover {
 /*styles active item */
 .active {
   background-color: lightgreen;
+}
+/* warning */
+.warning {
+  height: 50px;
+  padding: 5px;
+  line-height: 50px;
+  text-align: center;
+  box-sizing: content-box;
+  background-color: yellow;
+  border-radius: 10px;
+  margin: 10px;
 }
