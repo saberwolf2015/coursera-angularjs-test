@@ -1,0 +1,5 @@
+<div class="categories" data-ng-repeat="item in $ctrl.items">
+  <a ui-sref="items({shortName : item.short_name})">
+    <span data-ng-bind="item.name"></span>
+  </a>
+</div>
