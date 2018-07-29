@@ -1,3 +1,11 @@
+/**
+ * Fourth assignment for the course
+ * https://www.coursera.org/learn/single-page-web-apps-with-angularjs/home/welcome
+ * This is the routes config
+ *
+ * @author Tchernopyatov Alexey
+ * @version 1.1, 07/30/2018
+ */
 (function () {
 'use strict';
 
@@ -26,8 +34,6 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     ,
     resolve: {
       items: ['MenuDataService', function (MenuDataService) {
-        console.log('resolve');
-        //return [];
         return MenuDataService.getAllCategories();
       }]
     }
@@ -39,18 +45,16 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     controller: 'ItemsController as $ctrl',
     resolve: {
       items: ['MenuDataService','$stateParams', function (MenuDataService,$stateParams) {
-        console.log('resolve');
-        //return [];
         return MenuDataService.getItemsForCategory($stateParams.shortName);
       }]
     }
   })
   //test subview
   .state('items.itemDetail', {
-  url: '/item-detail/{itemId}',
-  templateUrl: './templates/routes/item-detail.template.html',
-  controller: "ItemDetailController as $ctrl"
-});
+    url: '/item-detail/{itemId}',
+    templateUrl: './templates/routes/item-detail.template.html',
+    controller: "ItemDetailController as $ctrl"
+  });
 }
 
 })();
