@@ -19,6 +19,8 @@ function SignupController($http,ApiPath,UserDataService) {
 
   $ctrl.submit = function() {
     console.log("user", $ctrl.user);
+    //uppercase the favorite_dish
+    $ctrl.user.favorite_dish = $ctrl.user.favorite_dish.toUpperCase()
     //since we added own validator, we can remove this check
     var url = ApiPath + '/menu_items/'+$ctrl.user.favorite_dish+'.json';
     console.log("url", url);

@@ -25,7 +25,7 @@
               return $q.resolve();
             }
             var def = $q.defer();
-            var url = ApiPath + '/menu_items/'+modelValue+'.json';
+            var url = ApiPath + '/menu_items/'+modelValue.toUpperCase()+'.json';
             $http.get(url).then(function successCallback(response) {
                 console.log(response);
                 def.resolve();
