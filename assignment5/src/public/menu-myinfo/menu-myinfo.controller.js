@@ -1,3 +1,9 @@
+/**
+ * The controller for the my info page
+ *
+ * @author Tchernopyatov A.V.
+ * @version 1.1, 08/06/2018
+ */
 (
   function() {
     "use strict";

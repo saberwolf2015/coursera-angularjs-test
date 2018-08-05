@@ -1,3 +1,9 @@
+/**
+ * The controller for the signup page
+ *
+ * @author Tchernopyatov A.V.
+ * @version 1.1, 08/06/2018
+ */
 (function () {
 "use strict";
 
@@ -10,7 +16,7 @@ function SignupController($http,ApiPath,UserDataService) {
   $ctrl.caption = "Yahoo";
   $ctrl.user = {};
   $ctrl.error = "";
-  
+
   $ctrl.submit = function() {
     console.log("user", $ctrl.user);
     //since we added own validator, we can remove this check
@@ -22,8 +28,8 @@ function SignupController($http,ApiPath,UserDataService) {
       UserDataService.setUserdata(angular.copy($ctrl.user));
     },function errorCallback(response) {
     console.log("error", response);
-    $ctrl.error = 'No such menu number exists';
-  });
+      $ctrl.error = 'No such menu number exists';
+    });
   }
 }
 

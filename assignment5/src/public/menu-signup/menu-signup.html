@@ -100,6 +100,7 @@
             </span>
             <span data-ng-show="signupForm.favDish.$pending.MenuItemValidator">Checking if this menu item is exists...</span>
             <span data-ng-show="signupForm.favDish.$error.MenuItemValidator">No such menu number exists</span>
+            <!-- this is unnecessary, because i added my own validator -->
             <span data-ng-if="ctrl.error" data-ng-bind="ctrl.error"></span>
 
       </div>

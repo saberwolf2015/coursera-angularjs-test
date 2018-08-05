@@ -1,3 +1,9 @@
+/**
+ * The service to store a user data
+ *
+ * @author Tchernopyatov A.V.
+ * @version 1.1, 08/06/2018
+ */
 (
   function(){
     "use strict";
