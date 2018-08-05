@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>{{ctrl.caption}}</h1>
+    <form name="signupForm" novalidate>
+
+      <div class="form-group">
+        <label for="first_name">Firstname</label>
+        <input  type="text"
+                name="first_name"
+                id = "first_name"
+                class="form-control"
+                ng-model="ctrl.user.first_name"
+                required
+                minlength="2"
+                ng-maxlength="10"
+                placeholder="Firstname" >
+        {{ ctrl.user.first_name }}
+        <span
+          ng-if="(signupForm.first_name.$error.minlength || signupForm.first_name.$error.required) && signupForm.first_name.$touched">
+          Firstname must be at least 2 characters long
+        </span>
+        <span ng-if="signupForm.first_name.$error.maxlength && signupForm.first_name.$touched">
+          Firstname must not be longer than 10 characters
+        </span>
+      </div>
+
+      <span data-ng-if="signupForm.first_name.$error.required
+            && signupForm.first_name.$error.$touched">
+            First name is required
+      </span>
+
+      <div class="form-group">
+        <label for="last_name">Lastname</label>
+        <input  type="text"
+                name="last_name"
+                id="last_name"
+                class="form-control"
+                ng-model="ctrl.user.last_name"
+                required
+                minlength="2"
+                ng-maxlength="20"
+                placeholder="Lastname">
+        {{ ctrl.user.last_name }}
+        <span
+          ng-if="(signupForm.last_name.$error.minlength || signupForm.last_name.$error.required) && signupForm.last_name.$touched">
+          Lastname must be at least 2 characters long
+        </span>
+        <span ng-if="signupForm.last_name.$error.maxlength && signupForm.last_name.$touched">
+          Lastname must not be longer than 20 characters
+        </span>
+      </div>
+
+
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input  type="email"
+                name="email"
+                ng-model="ctrl.user.email"
+                class="form-control"
+                id="email"
+                required
+                aria-describedby="emailHelp"
+                placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <span ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+          Must be a valid email address: handle@domain format
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone number</label>
+        <input  type="text"
+                name="phone"
+                pattern="(\d{3})-(\d{3})-(\d{4})"
+                ng-model="ctrl.user.phone"
+                class="form-control"
+                id="phone"
+                required
+                placeholder="Enter phone">
+            <span ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
+              Phone must be in the format ###-###-####.
+            </span>
+      </div>
+
+
+      <div class="form-group">
+        <label for="favDish">Specify the menu number that's your favorite dish</label>
+        <input  type="text"
+                name="favDish"
+                ng-model="ctrl.user.favorite_dish"
+                class="form-control"
+                id="favDish"
+                required
+                data-menu-item-validator
+                placeholder="Enter menu number">
+                <!--
+            <span ng-if="signupForm.favDish.$invalid && signupForm.favDish.$touched">
+              The favorite dish is required.
+            </span>
+          -->
+            <span ng-show="signupForm.favDish.$pending.MenuItemValidator">Checking if this menu item is exists...</span>
+            <span ng-show="signupForm.favDish.$error.MenuItemValidator">Menu Item not found</span>
+            <span data-ng-if="ctrl.error" data-ng-bind="ctrl.error"></span>
+
+      </div>
+      <button type="submit"
+              name="button"
+              data-ng-disabled="signupForm.$invalid"
+              class="btn btn-success btn-lg btn-block"
+              data-ng-click="ctrl.submit()">
+              <span class="glyphicon glyphicon-flash"></span>Submit
+      </button>
+
+      <div style="margin-top: 10px;">
+        Form valid? {{ signupForm.$valid }}
+      </div>
+    </form>
+    <div class="alert alert-success" data-ng-if="ctrl.success_message">
+      <p data-ng-bind="ctrl.success_message"></p>
+    </div>
+  </div>
+</div>
+
+<!--
+
+<span
+  ng-if="(signupForm.first_name.$error.minlength || regForm.first_name.$error.required) && regForm.username.$touched">
+  Username must be at least 2 characters long
+</span>
+<span ng-if="signupForm.first_name.$error.maxlength && regForm.first_name.$touched">
+  Username must not be longer than 10 characters
+</span>
+<span data-ng-if="signupForm.last_name.$error.required
+      && signupForm.last_name.$error.$touched">
+      Last name is required
+</span>
+<span ng-if="signupForm.last_name.$error.maxlength && regForm.last_name.$touched">
+  Username must not be longer than 20 characters
+</span>
+
+
+    <span data-ng-if="signupForm.email.$error.required
+          && signupForm.email.$error.$touched">
+          Email is required
+    </span>
+-->
