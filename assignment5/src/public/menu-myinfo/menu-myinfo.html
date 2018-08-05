@@ -1,7 +1,11 @@
 <div class="container">
   <div class="col-md-6 col-md-offset-3">
     <div data-ng-if="!ctrl.user">
-      Not Signed Up Yet. <a data-ui-sref="public.signup">Sign up Now!</a>
+      <div class="alert alert-info">
+        <p>
+          <strong>Not Signed Up Yet.</strong> <a data-ui-sref="public.signup">Sign up Now!</a>
+        </p>
+      </div>
     </div>
     <div data-ng-if="ctrl.user">
       <ul class="list-group">
@@ -10,18 +14,12 @@
         <li class="list-group-item">Email: <span data-ng-bind="ctrl.user.email"></span></li>
         <li class="list-group-item">Phone: <span data-ng-bind="ctrl.user.phone"></span></li>
         <li class="list-group-item">
-          <!--
-          Favorite: <span data-ng-bind="ctrl.user.favorite_dish"></span>
-          <div data-ng-bind="ctrl.user_fav.name"></div>
-          <div data-ng-bind="ctrl.user_fav.description"></div>
-          <div data-ng-bind="ctrl.user_fav.description"></div>
-        -->
-        <section>
-          <h3>Favorite menu item</h3>
-          <div class="container-fluid">
-            <menu-item menu-item="ctrl.user_fav" data-col-class="col-md-12"></menu-item>
-          </div>
-        </section>
+          <section>
+            <h3>Favorite menu item</h3>
+            <div class="container-fluid">
+              <menu-item menu-item="ctrl.user_fav" data-col-class="col-md-12"></menu-item>
+            </div>
+          </section>
         </li>
       </ul>
     </div>

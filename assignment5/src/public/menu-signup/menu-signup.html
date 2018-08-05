@@ -9,10 +9,10 @@
                 name="first_name"
                 id = "first_name"
                 class="form-control"
-                ng-model="ctrl.user.first_name"
+                data-ng-model="ctrl.user.first_name"
                 required
-                minlength="2"
-                ng-maxlength="10"
+                data-ng-minlength="2"
+                data-ng-maxlength="10"
                 placeholder="Firstname" >
         {{ ctrl.user.first_name }}
         <span
@@ -37,15 +37,15 @@
                 class="form-control"
                 ng-model="ctrl.user.last_name"
                 required
-                minlength="2"
-                ng-maxlength="20"
+                data-ng-minlength="2"
+                data-ng-maxlength="20"
                 placeholder="Lastname">
         {{ ctrl.user.last_name }}
         <span
-          ng-if="(signupForm.last_name.$error.minlength || signupForm.last_name.$error.required) && signupForm.last_name.$touched">
+          data-ng-if="(signupForm.last_name.$error.minlength || signupForm.last_name.$error.required) && signupForm.last_name.$touched">
           Lastname must be at least 2 characters long
         </span>
-        <span ng-if="signupForm.last_name.$error.maxlength && signupForm.last_name.$touched">
+        <span data-ng-if="signupForm.last_name.$error.maxlength && signupForm.last_name.$touched">
           Lastname must not be longer than 20 characters
         </span>
       </div>
@@ -62,10 +62,11 @@
                 aria-describedby="emailHelp"
                 placeholder="Enter email">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        <span ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+        <span data-ng-if="signupForm.email.$invalid && signupForm.email.$touched">
           Must be a valid email address: handle@domain format
         </span>
       </div>
+
       <div class="form-group">
         <label for="phone">Phone number</label>
         <input  type="text"
@@ -76,7 +77,7 @@
                 id="phone"
                 required
                 placeholder="Enter phone">
-            <span ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
+            <span data-ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
               Phone must be in the format ###-###-####.
             </span>
       </div>
@@ -86,19 +87,19 @@
         <label for="favDish">Specify the menu number that's your favorite dish</label>
         <input  type="text"
                 name="favDish"
-                ng-model="ctrl.user.favorite_dish"
+                data-ng-model="ctrl.user.favorite_dish"
                 class="form-control"
                 id="favDish"
                 required
+                data-ng-model-options="{updateOn:'default change blur',debounce:{default:500,blur:0,change:0}}"
                 data-menu-item-validator
                 placeholder="Enter menu number">
-                <!--
-            <span ng-if="signupForm.favDish.$invalid && signupForm.favDish.$touched">
+
+            <span data-ng-if="signupForm.favDish.$error.required && signupForm.favDish.$touched">
               The favorite dish is required.
             </span>
-          -->
-            <span ng-show="signupForm.favDish.$pending.MenuItemValidator">Checking if this menu item is exists...</span>
-            <span ng-show="signupForm.favDish.$error.MenuItemValidator">Menu Item not found</span>
+            <span data-ng-show="signupForm.favDish.$pending.MenuItemValidator">Checking if this menu item is exists...</span>
+            <span data-ng-show="signupForm.favDish.$error.MenuItemValidator">No such menu number exists</span>
             <span data-ng-if="ctrl.error" data-ng-bind="ctrl.error"></span>
 
       </div>
@@ -119,27 +120,3 @@
     </div>
   </div>
 </div>
-
-<!--
-
-<span
-  ng-if="(signupForm.first_name.$error.minlength || regForm.first_name.$error.required) && regForm.username.$touched">
-  Username must be at least 2 characters long
-</span>
-<span ng-if="signupForm.first_name.$error.maxlength && regForm.first_name.$touched">
-  Username must not be longer than 10 characters
-</span>
-<span data-ng-if="signupForm.last_name.$error.required
-      && signupForm.last_name.$error.$touched">
-      Last name is required
-</span>
-<span ng-if="signupForm.last_name.$error.maxlength && regForm.last_name.$touched">
-  Username must not be longer than 20 characters
-</span>
-
-
-    <span data-ng-if="signupForm.email.$error.required
-          && signupForm.email.$error.$touched">
-          Email is required
-    </span>
--->

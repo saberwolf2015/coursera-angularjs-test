@@ -10,9 +10,10 @@ function SignupController($http,ApiPath,UserDataService) {
   $ctrl.caption = "Yahoo";
   $ctrl.user = {};
   $ctrl.error = "";
-  //$ctrl.menuItems = menuItems;
+  
   $ctrl.submit = function() {
     console.log("user", $ctrl.user);
+    //since we added own validator, we can remove this check
     var url = ApiPath + '/menu_items/'+$ctrl.user.favorite_dish+'.json';
     console.log("url", url);
     $http.get(url).then(function successCallback(response) {
